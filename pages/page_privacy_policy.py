@@ -1,16 +1,10 @@
 import streamlit as st
-from footer import load_footer
 
-st.set_page_config(page_title="Privacy Policy")
 
 st.title("Privacy Policy")
 
-load_footer()
-
 st.markdown(
     """
-    **Privacy Policy**
-
     Last updated: July 8, 2024
 
     **Sentiment and Topic Modelling App** ("we", "us", or "our") operates the **Sentiment and Topic Modelling App** (the "Service"). This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service.

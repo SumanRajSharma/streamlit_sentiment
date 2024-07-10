@@ -1,21 +1,6 @@
 import streamlit as st
-from footer import load_footer
-
-# page config
-st.set_page_config(
-    page_title="Sentiment and Topic Modelling App",
-    layout="wide",
-    initial_sidebar_state="expanded",
-    menu_items={
-        'Get Help': 'https://www.extremelycoolapp.com/help',
-        'Report a bug': "https://www.extremelycoolapp.com/bug",
-        'About': "# This is a header. This is an *extremely* cool app!"
-    }
-)
 
 st.write("# Sentiment and Topic Modelling App!")
-
-load_footer()
 
 st.markdown(
     """

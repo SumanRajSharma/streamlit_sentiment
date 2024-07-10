@@ -2,13 +2,7 @@ import streamlit as st
 from PIL import Image
 import os
 
-# Load images
-image_dir = "images"
-medium_icon = Image.open(os.path.join(image_dir, 'medium.png'))
-github_icon = Image.open(os.path.join(image_dir, 'github.png'))
-portfolio_icon = Image.open(os.path.join(image_dir, 'portfolio.png'))
-
-# Convert images to base64
+# Function to convert PIL image to base64
 def pil_to_base64(image):
     import base64
     from io import BytesIO
@@ -16,10 +10,6 @@ def pil_to_base64(image):
     buffered = BytesIO()
     image.save(buffered, format="PNG")
     return base64.b64encode(buffered.getvalue()).decode()
-
-medium_icon_base64 = pil_to_base64(medium_icon)
-github_icon_base64 = pil_to_base64(github_icon)
-portfolio_icon_base64 = pil_to_base64(portfolio_icon)
 
 # Define a helper function to display image links
 def image_link(icon, url, text):
@@ -30,7 +20,29 @@ def image_link(icon, url, text):
     </div>
     """
 
-def load_footer():
+def load_footer(theme):
+    image_dir = "images"
+
+    # Determine which images to load based on the theme
+    if theme:
+        if theme.get('base') == 'light':
+            medium_icon = Image.open(os.path.join(image_dir, 'dark_medium.png'))
+            github_icon = Image.open(os.path.join(image_dir, 'dark_github.png'))
+            portfolio_icon = Image.open(os.path.join(image_dir, 'dark_web.png'))
+        else:
+            medium_icon = Image.open(os.path.join(image_dir, 'light_medium.png'))
+            github_icon = Image.open(os.path.join(image_dir, 'light_github.png'))
+            portfolio_icon = Image.open(os.path.join(image_dir, 'light_web.png'))
+    else:
+        medium_icon = Image.open(os.path.join(image_dir, 'dark_medium.png'))
+        github_icon = Image.open(os.path.join(image_dir, 'dark_github.png'))
+        portfolio_icon = Image.open(os.path.join(image_dir, 'dark_web.png'))
+
+    # Convert images to base64
+    medium_icon_base64 = pil_to_base64(medium_icon)
+    github_icon_base64 = pil_to_base64(github_icon)
+    portfolio_icon_base64 = pil_to_base64(portfolio_icon)
+
     st.sidebar.markdown("Hi, I'm Suman Raj Sharma, creator of the Data Algo Medium account. I'm passionate about data science and algorithms.")
 
     # Add links with Streamlit images
